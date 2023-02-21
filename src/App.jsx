@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import  Calendar from './components/Calendar'
+import Calendar from './pages/Calendar'
 import './App.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
