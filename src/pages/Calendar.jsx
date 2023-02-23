@@ -15,9 +15,8 @@ const Calendar = () => {
 
     return (
         <div>
-            <h1 className='text-4xl text-center'>{moment().format('YYYY')}</h1>
-            <div className='grid-cols-[16rem_calc(100vw-16rem)]'></div>
-            <div className='border-2'>
+            <h1 className='text-4xl text-center pb-4'>{moment().format('YYYY')}</h1>
+            <div className='grid grid-cols-1 sm:grid-cols-3 h-screen w-full place-items-center'> {/* Posicionamento dos meses */}
                 {monthX.map(value => (<CardsOfYear key={value} month={value} currentYear={currentYear} />))}
             </div>
         </div>
