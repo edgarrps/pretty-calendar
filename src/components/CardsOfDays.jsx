@@ -10,13 +10,13 @@ const CardsOfDays = (props) => {
     day.getMonth() !== currentMonth.getMonth() ? setDayBtn('noInMonth') : ''
   })
 
-  const handleClickDate = () => {
+  const handleClickDate = () => { //implementação do checkData será feito aqui
     (dayBtn == '') ? setDayBtn('ok') : setDayBtn('')
   }
 
 
   return (
-    <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-default' : ''}`}> {props.day.format('DD').toString()}</div>
+    <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-not-allowed' : ''}`}> {props.day.format('DD').toString()}</div>
   )
 }
 
