@@ -11,12 +11,13 @@ export const CardsOfYear = (props) => {
     const daysOfTheWeek = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'] //dias da semana impressos no calendário
 
     useEffect(() => {
+        setMonthsOfYearCard(monthsOfYearCard.year(props.currentYear))
         setWeeks(build(monthsOfYearCard))
-    }, [monthsOfYearCard])
+    }, [monthsOfYearCard, props.currentYear])
 
     return (
         <div className='pb-10'>
-            <div className='w-[300px] h-full p-3 rounded-lg shadow-xl hover:shadow-2xl hover:border hover:border-purple-100' id='month-card'>
+            <div className='w-[300px] h-full p-3 rounded-lg shadow-xl transition duration-300 ease-out hover:ease-in hover:shadow-2xl hover:border hover:border-purple-100' id='month-card'>
                 <div className='text-gray-500 text-center pb-5 font-extrabold'>{monthsOfYearCard.format('MMMM')}</div>
                 <hr className='pb-1 bg-purple-100'/>
                 <div className='grid grid-cols-7 pt-2 pb-3 bg-pink-50 font-bold text-center'>{daysOfTheWeek.map(position => (<div key={position}>{position}</div>))}</div>
