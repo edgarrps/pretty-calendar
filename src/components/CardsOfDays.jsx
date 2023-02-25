@@ -6,12 +6,28 @@ const CardsOfDays = (props) => {
 
   useEffect(() => {
     const currentMonth = new Date(props.month + ',01,' + props.year)
+    
+    if (day.getMonth() !== currentMonth.getMonth()) {
+      setDayBtn('noInMonth')
+      return
+    }
 
-    day.getMonth() !== currentMonth.getMonth() ? setDayBtn('noInMonth') : ''
-  })
+    props.checkDate.find((value) => value.getTime() === day.getTime()) ? setDayBtn('ok') : setDayBtn('')
+  }, [])
 
-  const handleClickDate = () => { //implementação do checkData será feito aqui
-    (dayBtn == '') ? setDayBtn('ok') : setDayBtn('')
+  const handleClickDate = () => {
+    if (dayBtn !== 'noInMonth')
+      if (props.checkDate.find((value) => value.getTime() === day.getTime())) {
+        setDayBtn('')
+        props.setCheckDate(
+          props.checkDate.filter(
+            (value) => value.getTime() !== day.getTime()
+          )
+        )
+      } else {
+        setDayBtn('ok')
+        props.setCheckDate([...props.checkDate, day])
+      }
   }
 
 
