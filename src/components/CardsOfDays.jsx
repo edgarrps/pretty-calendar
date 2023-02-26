@@ -1,14 +1,23 @@
 import { useEffect, useState } from "react"
+import moment from "moment"
 
 const CardsOfDays = (props) => {
-  const [dayBtn, setDayBtn] = useState('')
+  const monthToday = moment().format('MM')
+  const dayToday = moment().format('DD')
   const day = props.day._d
+  const [dayBtn, setDayBtn] = useState('')
+  const [currentDay, setCurrentDay] = useState(new Date(monthToday + ',' + dayToday + ',' + props.year))
+
 
   useEffect(() => {
     const currentMonth = new Date(props.month + ',01,' + props.year)
-    
     if (day.getMonth() !== currentMonth.getMonth()) {
       setDayBtn('noInMonth')
+      return
+    }
+
+    if (day.getTime() === currentDay.getTime()) {
+      setCurrentDay('today')
       return
     }
 
@@ -32,7 +41,7 @@ const CardsOfDays = (props) => {
 
 
   return (
-    <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-not-allowed' : ''}`}> {props.day.format('DD').toString()}</div>
+    <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-not-allowed' : ''} ${currentDay === 'today' ? 'bg-blue-200 hover:' : ''}`}> {props.day.format('DD').toString()}</div>
   )
 }
 
