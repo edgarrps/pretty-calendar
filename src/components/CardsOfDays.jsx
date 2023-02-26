@@ -2,12 +2,9 @@ import { useEffect, useState } from "react"
 import moment from "moment"
 
 const CardsOfDays = (props) => {
-  const yearToday = moment().format('YYYY')
-  const monthToday = moment().format('MM')
-  const dayToday = moment().format('DD')
+  const [currentDay, setCurrentDay] = useState(new Date(moment().format('MM') + ',' + moment().format('DD') + ',' + moment().format('YYYY')))
   const day = props.day._d
   const [dayBtn, setDayBtn] = useState('')
-  const [currentDay, setCurrentDay] = useState(new Date(monthToday + ',' + dayToday + ',' + yearToday))
 
 
   useEffect(() => {
