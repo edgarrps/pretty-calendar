@@ -1,22 +1,35 @@
 import { useEffect, useState } from 'react'
 import moment from 'moment'
-import Holiday from './Holiday'
+import api from '../services/Api'
 
 const CardsOfDays = (props) => {
-  const [currentDay, setCurrentDay] = useState(new Date(moment().format('MM') + ',' + moment().format('DD') + ',' + moment().format('YYYY')))
+
+  const [today, setToday] = useState('')
   const [dayBtn, setDayBtn] = useState('')
+  const [holidays, setHolidays] = useState([])
   const day = props.day._d
 
   useEffect(() => {
     const currentMonth = new Date(props.month + ',01,' + props.year)
+
     if (day.getMonth() !== currentMonth.getMonth()) {
       setDayBtn('noInMonth')
       return
     }
 
+//consumo da api
+    // api.get(moment().format('YYYY')).then(({ data }) => {
+    //   setHolidays(data)
+    //   return (
+    //   holidays.map(function(data, index) {
+
+    //     })
+    // )})
+
+
+    const currentDay = new Date(moment().format('MM') + ',' + moment().format('DD') + ',' + moment().format('YYYY'))
     if (day.getTime() === currentDay.getTime()) {
-      setCurrentDay('today')
-      return
+      setToday('today')
     }
 
     props.checkDate.find((value) => value.getTime() === day.getTime()) ? setDayBtn('ok') : setDayBtn('')
@@ -39,7 +52,8 @@ const CardsOfDays = (props) => {
 
 
   return (
-    <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-not-allowed' : ''} ${currentDay === 'today' ? 'bg-blue-200 hover:' : ''}`}> {props.day.format('DD').toString()}
+    <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-not-allowed' : ''} ${today === 'today' ? 'bg-blue-200 hover:' : ''}`}>
+      {props.day.format('DD').toString()}
     </div>
   )
 }
