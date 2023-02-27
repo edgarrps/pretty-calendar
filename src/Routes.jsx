@@ -7,7 +7,6 @@ export default () => {
         <>
         <Routes>
            <Route exact path='/' element={<Calendar />}/> 
-           <Route exact path='/holidays' element={<Holiday />}/>
         </Routes>
         </>
     )
