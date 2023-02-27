@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
-import moment from "moment"
+import { useEffect, useState } from 'react'
+import moment from 'moment'
+import Holiday from './Holiday'
 
 const CardsOfDays = (props) => {
   const [currentDay, setCurrentDay] = useState(new Date(moment().format('MM') + ',' + moment().format('DD') + ',' + moment().format('YYYY')))
-  const day = props.day._d
   const [dayBtn, setDayBtn] = useState('')
-
+  const day = props.day._d
 
   useEffect(() => {
     const currentMonth = new Date(props.month + ',01,' + props.year)
@@ -39,7 +39,8 @@ const CardsOfDays = (props) => {
 
 
   return (
-    <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-not-allowed' : ''} ${currentDay === 'today' ? 'bg-blue-200 hover:' : ''}`}> {props.day.format('DD').toString()}</div>
+    <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-not-allowed' : ''} ${currentDay === 'today' ? 'bg-blue-200 hover:' : ''}`}> {props.day.format('DD').toString()}
+    </div>
   )
 }
 

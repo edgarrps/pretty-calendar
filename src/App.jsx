@@ -1,10 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Calendar from './pages/Calendar'
 import './App.css'
+import { BrowserRouter } from 'react-router-dom'
+import Routes from './Routes'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Calendar />
-  </React.StrictMode>,
+    <BrowserRouter>
+    <Routes />
+    </BrowserRouter>
+  </React.StrictMode>
 )
