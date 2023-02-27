@@ -17,15 +17,13 @@ const CardsOfDays = (props) => {
       return
     }
 
-//consumo da api
-    // api.get(moment().format('YYYY')).then(({ data }) => {
-    //   setHolidays(data)
-    //   return (
-    //   holidays.map(function(data, index) {
-
-    //     })
-    // )})
-
+    api.get(moment().format('YYYY')).then(({ data }) => {
+      setHolidays(data)
+      return (holidays.map((hday) => {
+        return hday
+      }))
+    })
+    console.log(holidays)
 
     const currentDay = new Date(moment().format('MM') + ',' + moment().format('DD') + ',' + moment().format('YYYY'))
     if (day.getTime() === currentDay.getTime()) {
