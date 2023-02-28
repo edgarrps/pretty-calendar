@@ -9,6 +9,7 @@ const CardsOfDays = (props) => {
   const [holidays, setHolidays] = useState([])
   const day = props.day._d
 
+
   useEffect(() => {
     const currentMonth = new Date(props.month + ',01,' + props.year)
 
@@ -17,18 +18,18 @@ const CardsOfDays = (props) => {
       return
     }
 
-    api.get(moment().format('YYYY')).then(({ data }) => {
-      setHolidays(data)
-      return (holidays.map((hday) => {
-        return hday
-      }))
-    })
-    console.log(holidays)
-
     const currentDay = new Date(moment().format('MM') + ',' + moment().format('DD') + ',' + moment().format('YYYY'))
     if (day.getTime() === currentDay.getTime()) {
       setToday('today')
     }
+
+    //consumo API considerando o moment().format('YYYY') o ano vigente
+    api.get(moment().format('YYYY')).then(({ data }) => {
+      setHolidays(data)
+      return (holidays.map(hday => hday.date)
+      )
+    })
+    console.log(holidays)
 
     props.checkDate.find((value) => value.getTime() === day.getTime()) ? setDayBtn('ok') : setDayBtn('')
   }, [])
