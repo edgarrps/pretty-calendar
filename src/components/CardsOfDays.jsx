@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import moment from 'moment'
-import Holiday from '../services/Holiday'
+// import Holiday from '../services/Holiday'
 
 export default function CardsOfDays(props) {
-  const [holidays, setHolidays] = useState([])
+  // const [holidays, setHolidays] = useState([])
   const [today, setToday] = useState('')
   const [dayBtn, setDayBtn] = useState('')
   const day = props.day._d
@@ -35,7 +35,7 @@ export default function CardsOfDays(props) {
   return (
     <div onClick={handleClickDate} className={`cursor-pointer select-none	font-semibold w-[27px] h-[27px] rounded-lg ${dayBtn == 'ok' ? 'bg-yellow-200' : ''} ${dayBtn === 'noInMonth' ? 'text-gray-50 cursor-not-allowed' : ''} ${today === 'today' ? 'bg-blue-200' : ''}`}>
       {props.day.format('DD').toString()}
-      <Holiday holidays={holidays} setHolidays={setHolidays} />
+      {/* <Holiday holidays={holidays} setHolidays={setHolidays} /> */}
     </div>
   )
 }
