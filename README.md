@@ -1,7 +1,7 @@
 <h1 align="center">Pretty Calendar</h1>
 <p align="center">
 <img src="https://i.imgur.com/v3GxDBD.png" width="400" height="300">
-     <p>
+</p>
 
 <h3 align="center">
 <a href="https://pretty-calendar.vercel.app">Deploy</a>
